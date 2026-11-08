@@ -1,53 +1,28 @@
-#include <stdio.h>
 #include <stdlib.h>
+#include <stdio.h>
 #include <time.h>
 
-int main(void)
-{
-    int nombreMagique;
-    int proposition = 0;
-    int nbEssais = 0;
 
-    /* Initialisation du générateur aléatoire */
-    srand((unsigned int)time(NULL));
+int main(){
+    srand(time(NULL));
+    int entre_1_et_100 = rand() % 100+1;
+    int nombre = 111;
 
-    /* Tirage d'un nombre entre 1 et 100 */
-    nombreMagique = (rand() % 100) + 1;
+     printf("écris un nombre entre 1 et 100 \n");
+    while (entre_1_et_100 != nombre) {
 
-    printf("=== Le Numéro Magique ===\n");
-    printf("J'ai choisi un nombre entre 1 et 100. A vous de le trouver !\n\n");
+        scanf("%d", &nombre);
 
-    do
-    {
-        printf("Votre proposition : ");
+        if (entre_1_et_100 == nombre) {
+            printf("Bien joué tu a réussi a trouver le nombre  %d \n", entre_1_et_100);
 
-        /* Vérifie que la saisie est bien un entier */
-        if (scanf("%d", &proposition) != 1)
-        {
-            printf("Saisie invalide, veuillez entrer un nombre entier.\n");
-            /* Vide le buffer d'entrée */
-            int c;
-            while ((c = getchar()) != '\n' && c != EOF);
-            continue;
         }
-
-        nbEssais++;
-
-        if (proposition < nombreMagique)
-        {
-            printf("C'est plus grand !\n\n");
+        if (nombre < entre_1_et_100){
+            printf("Dommage le nombre est plud grand que  %d \n", nombre);
         }
-        else if (proposition > nombreMagique)
-        {
-            printf("C'est plus petit !\n\n");
+        if (nombre > entre_1_et_100){
+            printf("Dommage le nombre est plus petit que  %d \n", nombre);
         }
-        else
-        {
-            printf("\nBravo ! Vous avez trouvé le nombre magique (%d) en %d essai(s).\n",
-                   nombreMagique, nbEssais);
-        }
-
-    } while (proposition != nombreMagique);
-
-    return 0;
+    }
+    exit(0);
 }
